@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#000000">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<title>Narrative First – Trade Journal</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f3f4f9;--card:#fff;--ink:#141a2b;--mut:#6a7088;--line:#dde0ec;--bl:#2f6fe0;--gr:#15965f;--pu:#6a56d6;--am:#c9831a;--rd:#d4493c}
+:root:not([data-theme=light]){}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b0f1a;--card:#131a2b;--ink:#eef0f8;--mut:#8b93ae;--line:#242c44;--bl:#6ea8ff;--gr:#5fd7a0;--pu:#9b8cf0;--am:#f0b24b;--rd:#ef7a6e}}
+:root[data-theme=dark]{--bg:#0b0f1a;--card:#131a2b;--ink:#eef0f8;--mut:#8b93ae;--line:#242c44;--bl:#6ea8ff;--gr:#5fd7a0;--pu:#9b8cf0;--am:#f0b24b;--rd:#ef7a6e}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:84px}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:26px;margin:4px 0 2px;letter-spacing:-.02em}h2{font-size:18px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 14px;font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:14px;margin:0 0 12px}
+.c1{border-left-color:var(--bl)}.c2{border-left-color:var(--bl)}.c3{border-left-color:var(--bl)}.c4{border-left-color:var(--gr)}.c5{border-left-color:var(--pu)}.ca{border-left-color:var(--am)}
+.q{color:var(--mut);font-style:italic;font-size:13px;margin:0 0 8px}
+label.cb,label.rd{display:flex;gap:10px;align-items:flex-start;padding:7px 0;cursor:pointer}
+input[type=checkbox],input[type=radio]{width:20px;height:20px;margin:1px 0 0;accent-color:var(--pu);flex:none}
+textarea,input[type=text],input[type=time],input[type=number],select{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:9px;font:inherit;margin:4px 0}
+textarea{min-height:60px;resize:vertical}
+button{font:inherit;background:var(--pu);color:#fff;border:0;border-radius:8px;padding:10px 14px;cursor:pointer}button.g{background:transparent;color:var(--ink);border:1px solid var(--line)}button.s{padding:4px 9px;font-size:13px}
+:focus-visible{outline:2px solid var(--bl);outline-offset:2px}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{flex:1;max-width:130px;background:none;color:var(--mut);border-radius:0;padding:12px 2px;font-size:13px}nav button.on{color:var(--pu);font-weight:700;box-shadow:inset 0 2px var(--pu)}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.sp{justify-content:space-between}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chips label{border:1px solid var(--line);border-radius:20px;padding:4px 10px;font-size:13px;display:flex;gap:6px;align-items:center;cursor:pointer}.chips input{width:15px;height:15px}
+.gate{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:8px;border:1px solid var(--line);margin:6px 0}.gate b{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;color:#fff;flex:none}
+.ok b{background:var(--gr)}.no b{background:var(--rd)}.na b{background:var(--mut)}.gate small{color:var(--mut);display:block}
+.verdict{text-align:center;padding:16px;border-radius:10px;font-size:20px;font-weight:800;margin:10px 0;color:#fff}.v-ex{background:var(--pu)}.v-no{background:var(--rd)}.v-w{background:var(--am)}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pu)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.cal div{aspect-ratio:1;border-radius:8px;border:1px solid var(--line);font-size:12px;padding:3px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}.cal .h{aspect-ratio:auto;border:0;cursor:default;color:var(--mut);text-align:center}
+.cal .w{background:color-mix(in srgb,var(--gr) 30%,transparent)}.cal .l{background:color-mix(in srgb,var(--rd) 30%,transparent)}.cal .t{outline:2px solid var(--pu)}
+.big{font-size:28px;font-weight:800;letter-spacing:-.02em}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pos{color:var(--gr)}.neg{color:var(--rd)}
+.ban{background:var(--am);color:#111;padding:12px;border-radius:10px;margin-bottom:12px;font-weight:600}
+.x{background:none;color:var(--rd);padding:2px 8px}
+.brand{max-width:720px;margin:0 auto;padding:14px 16px 0;display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:-.01em}.logo{width:38px;height:38px;border-radius:9px;box-shadow:0 0 0 1px var(--line)}.brand small{display:block;color:var(--mut);font-weight:400;font-size:12px}
+.lp .brand{display:none}.lp main{max-width:1020px}.lp body,body.lp{padding-bottom:0}.lp nav{display:none}
+.lpbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0 28px}.lpbar b{display:flex;align-items:center;gap:10px;font-size:17px}.lpbar img{width:36px;height:36px;border-radius:9px;box-shadow:0 0 0 1px var(--line)}
+.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:28px;align-items:center;padding:12px 0 36px}@media(max-width:760px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(30px,6vw,46px);line-height:1.08;letter-spacing:-.03em;margin:0 0 14px}.hero p{color:var(--mut);font-size:16px;margin:0 0 18px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}.btns button{padding:13px 20px;font-size:15px;font-weight:600}.fine{font-size:12px;color:var(--mut);margin-top:12px}
+.lpsec{padding:26px 0;border-top:1px solid var(--line)}.lpsec h2{font-size:24px;letter-spacing:-.02em;margin:0 0 6px}.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:16px}
+.feat .card{margin:0}.feat h3{margin:0 0 4px;font-size:16px}.feat p{margin:0;color:var(--mut);font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px}.steps div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}.steps b{font-size:22px;display:block}.steps small{color:var(--mut)}
+.s1{border-top:3px solid var(--bl)}.s4{border-top:3px solid var(--gr)}.s5{border-top:3px solid var(--pu)}.cta{text-align:center;padding:36px 0}.cta h2{font-size:28px}
+</style></head><body><header class=brand><svg class=logo role=img aria-label="MJ logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="18" fill="#000"/><text x="50" y="68" text-anchor="middle" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="800" font-size="62" letter-spacing="-3" fill="#fff">mj</text></svg><div>My Journal<small>Narrative first, filters second</small></div></header>
+<main id="app"></main>
+<nav id="nav"></nav>
+<script>
+const TABS=[["today","Today"],["trade","Trade"],["cal","Calendar"],["stats","Analytics"],["rev","Reviews"]];
+const RULES=["Narrative first, filters second","Run the decision flow top to bottom – any “no” means no trade","Check the wick: large wick = delayed protraction, stand aside","Risk per trade within my limit","Max trades for the day respected","Log every trade, including the ones I skipped"];
+const MIS=["Traded with no narrative","Ignored large wick","No CiC","No LTF signature","Entered early","Moved stop","Oversized","Revenge / FOMO","Broke daily rules"];
+let S={rules:RULES.map((t,i)=>({id:i,t})),checks:{},trades:[],reviews:{},alarms:{rules:{t:"07:30",on:false},review:{t:"20:00",on:false}},fired:{}};
+
+let D={},tab="today",calM=new Date(),calSel=null,per="week";
+let UID=null,UNAME="",sy="",tm;
+const setSy=m=>{sy=m;const e=$("#sy");if(e)e.textContent=m};
+const sv=()=>{S.ts=Date.now();setSy("Saving…");clearTimeout(tm);tm=setTimeout(push,700)};
+async function push(){if(!UID)return;try{await FB.save(UID,S);setSy("☁ Saved to your account")}catch(e){setSy("⚠ Not saved – check your connection. It retries on your next change.")}}
+function showLogin(){document.body.classList.add("lp");$("#nav").innerHTML="";$("#app").innerHTML=`<div class=lpbar><b><img src=logo.svg alt="">My Journal</b><button class=g onclick="FB.login().catch(e=>alert(e.message))">Sign in</button></div>
+<section class=hero><div><h1>Stop hunting setups. Build the story first, then confirm it.</h1><p>A daily trading journal built on the five-component decision flow: narrative, qualified swing, LTF signature. Any “no” means no trade. Every win, loss and pass gets reviewed, so your repeated mistakes show up in numbers.</p>
+<div class=btns><button onclick="FB.login().catch(e=>alert(e.message))">Sign in with Google</button><button class=g onclick=installApp()>Install app</button></div><div class=fine>Free · Private to your Google account · Works on phone and desktop</div></div>
+<div class=card style="margin:0"><h2>Decision flow <small style="color:var(--mut);font-weight:400">(example)</small></h2>
+<div class="gate ok"><b>✓</b><div>1. Narrative<small>Reversal ERL→ERL, relevant swing</small></div></div><div class="gate ok"><b>✓</b><div>2. Profile<small>London delayed, small wick</small></div></div><div class="gate ok"><b>✓</b><div>3. Key level<small>Order-paired range</small></div></div><div class="gate ok"><b>✓</b><div>4. 2-stage CiC<small>SMT + PSP variant</small></div></div><div class="gate no"><b>✕</b><div>5. LTF V-shape<small>No signature yet</small></div></div><div class="verdict v-w">WAIT – no signature yet</div></div></section>
+<section class=lpsec><h2>Run every idea top to bottom</h2><p class=sub>The order matters. Filters only mean something once a narrative tells you which swing counts.</p>
+<div class=steps><div class=s1><b>1</b>Narrative<br><small>Where is price going?</small></div><div class=s1><b>2</b>Profile<br><small>How do we get there?</small></div><div class=s1><b>3</b>Key level<br><small>Where does the swing form?</small></div><div class=s4><b>4</b>CiC<br><small>Is the swing real?</small></div><div class=s5><b>5</b>LTF V-shape<br><small>Reversal signature</small></div></div></section>
+<section class=lpsec><h2>Everything you need to stay disciplined</h2><div class=feat>
+<div class=card><h3>Daily rules + reminders</h3><p>Tick your rules before you trade. Set a time to check them and a time to review the day.</p></div>
+<div class=card><h3>Live decision flow</h3><p>Fill in the five components and see EXECUTE, WAIT or NO TRADE instantly.</p></div>
+<div class=card><h3>Good and bad trade reviews</h3><p>Pick good or bad win, loss or pass, and answer the questions that fit it.</p></div>
+<div class=card><h3>Calendar</h3><p>Every day in R and dollars, with a mark for days you kept all your rules.</p></div>
+<div class=card><h3>Analytics</h3><p>Win rate, followed-the-flow %, and your repeated problems by week, month and year.</p></div>
+<div class=card><h3>Weekly and monthly reviews</h3><p>Your numbers filled in, with prompts to find the one fix for next period.</p></div></div></section>
+<section class="lpsec cta"><h2>Start journaling in under a minute</h2><p class=sub>Sign in with Google. Your journal saves to your account and follows you across devices.</p><div class=btns style="justify-content:center"><button onclick="FB.login().catch(e=>alert(e.message))">Sign in with Google</button><button class=g onclick=installApp()>Install app</button></div></section>
+<p class=fine style="text-align:center;padding-bottom:28px">My Journal is a personal record-keeping tool, not financial advice.</p>`}
+let IP=null;addEventListener("beforeinstallprompt",e=>{e.preventDefault();IP=e});
+async function installApp(){if(IP){IP.prompt();await IP.userChoice;IP=null}else alert("To install: on iPhone tap Share then Add to Home Screen. On Android Chrome open the menu and tap Install app. On desktop Chrome or Edge use the install icon in the address bar.")}
+if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+window.onUser=async u=>{if(!u){UID=null;showLogin();return}document.body.classList.remove("lp");
+ $("#app").innerHTML="<p class=sub>Loading your journal…</p>";
+ try{const r=await FB.load(u.uid);if(r)Object.assign(S,r);UID=u.uid;UNAME=u.displayName||u.email||"";R();setSy("☁ Saved to your account")}catch(e){$("#app").innerHTML="<p class=ban>Could not load your data: "+esc(e.message)+". Check your Firebase setup in README.md, then reload.</p>"}};
+const NT=t=>t.out=="No trade"||t.out=="Skipped (no trade)";
+const QS={"Good win":["What can I do to repeat this kind of trade in the future?"],"Bad win":["Where did I deviate from my plan/approach, and why?","How could I avoid this flawed win in the future?"],"Good loss":["Was there any logical way to avoid this loss in the moment?","What specifically did I do well in this trade despite the outcome?","Were emotions controlled after the losing trade was realized?"],"Bad loss":["Where did I deviate from my plan, and why?","What were the warning signs that led into this losing trade?","Did my response to the trade impact the following trades?"],"Good pass":["What conditions were missing that prevented a valid setup?","What reinforced my confidence to stay inactive today?","Did avoiding unnecessary risk protect your capital or mental clarity?"],"Bad pass":["What specifically caused me to miss a valid opportunity?","Was the setup identified in real time or only recognized afterwards?","What process improvements would have allowed execution?"]};
+const QO={Win:["Good win","Bad win"],Loss:["Good loss","Bad loss"],"No trade":["Good pass","Bad pass"]};
+function qb(){const o=QO[D.out];if(!o)return"";if(!o.includes(D.q))D.q="";return `<p class=q>How would you rate it?</p><div class=row>${o.map(x=>rd("q",x,x)).join("")}</div>`+(QS[D.q]||[]).map((q,i)=>`<p class=q>${q}</p>${tx("qa"+i,"Your answer")}`).join("")}
+const pad=n=>String(n).padStart(2,"0"),ymd=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+const today=()=>ymd(new Date());
+const mon=d=>{const x=new Date(d);x.setDate(x.getDate()-((x.getDay()+6)%7));return x};
+const wk=d=>ymd(mon(d)),mk=d=>ymd(d).slice(0,7);
+const $=s=>document.querySelector(s),esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cb=(k,l)=>`<label class=cb><input type=checkbox data-k=${k} ${D[k]?"checked":""}><span>${l}</span></label>`;
+const rd=(k,v,l)=>`<label class=rd><input type=radio name=${k} data-k=${k} value="${v}" ${D[k]==v?"checked":""}><span>${l}</span></label>`;
+const tx=(k,p)=>`<textarea data-k=${k} placeholder="${p}">${esc(D[k])}</textarea>`;
+const sel=(k,o)=>`<select data-k=${k}><option value="">Select…</option>${o.map(x=>`<option ${D[k]==x?"selected":""}>${x}</option>`).join("")}</select>`;
+
+function gates(){
+ const rev=D.draw=="Reversal (ERL→ERL)";
+ const g=[
+ [1,"Narrative","Draw, relevant swing, story",!!(D.draw&&D.swings&&(D.narr||"").trim())],
+ [2,"Profile","Session profile + small wick",!!(D.profile&&D.wick=="Small wick (validates expansion)"&&D.how)],
+ [3,"Key level","Where the swing forms",!!(D.kl&&D.klType&&(D.klText||"").trim())],
+ [4,rev?"2-stage CiC":"≥1-stage CiC in a gap",rev?"SMT + PSP variant":"SMT fill inside a gap",rev?!!D.cic2:!!D.cic1]];
+ if(D.advOn)g.push(["+","Advanced filter","Decoupling / SS-CiC satisfied",!!D.advOk]);
+ g.push([5,"LTF V-shape","Signature: "+(D.sig||"pick one"),!!(D.v&&D.sig)]);
+ return g}
+function verdict(){const g=gates();const f=g.filter(x=>!x[3]);
+ if(!f.length)return["v-ex","EXECUTE",f];
+ if(f.length==1&&f[0][0]==5)return["v-w","WAIT – no signature yet",f];
+ return["v-no","NO TRADE – swing not qualified",f]}
+function flow(){const el=$("#flow");if(!el)return;const g=gates();let stop=false;
+ const [vc,vt]=verdict();
+ el.innerHTML=g.map(x=>{const c=stop?"na":x[3]?"ok":"no";if(!x[3])stop=true;return`<div class="gate ${c}"><b>${c=="ok"?"✓":c=="no"?"✕":"–"}</b><div>${x[0]}. ${x[1]}<small>${x[2]}</small></div></div>`}).join("")+`<div class="verdict ${vc}">${vt}</div>`;
+ const t=S.checks[today()]||{},all=S.rules.every(r=>t[r.id]);
+ $("#rw").innerHTML=all?"":`<div class=ban>Today’s rules aren’t all checked yet. Review them on the Today tab before trading.</div>`}
+
+function vTrade(){
+ return`<h1>Trade decision flow</h1><p class=sub>Build the story first, then confirm it. Any “no” means no trade.</p><div id=rw></div>
+<div class="card c1"><h2>1 · Narrative</h2><p class=q>Draw on liquidity – where is price going?</p>
+${rd("draw","Reversal (ERL→ERL)","Reversal – ERL → ERL (order-paired ranges)")}${rd("draw","Continuation (IRL→ERL)","Continuation – IRL → ERL (FVG → swing)")}${rd("draw","Retracement (ERL→IRL)","Retracement – ERL → IRL (swing → FVG)")}
+${cb("swings","Relevant swings nearby (proximity weighed)")}${cb("fail","Failure swing present")}${cb("res","Low vs high resistance path identified")}
+${sel("phase",["Accumulation","Manipulation","Distribution","Expansion","Retracement"])}<p class=q>Which phase of price are we in?</p>
+${tx("narr","What is the narrative?")}</div>
+<div class="card c2"><h2>2 · Profile</h2><p class=q>How do we get there, and which session reversed?</p>
+${cb("profile","We have a profile")}${sel("pat",["OHLC","OLHC"])}${cb("po3","Po3 present on Daily and H4")}${sel("sess",["Asia","London classic","London delayed","NY","Void (S&D)"])}
+${rd("wick","Small wick (validates expansion)","Small wick – validates expansion")}${rd("wick","Large wick (invalid → Delayed P)","Large wick – invalidation, delayed protraction")}
+${tx("how","How do we get there?")}</div>
+<div class="card c3"><h2>3 · Key level</h2><p class=q>Where will we create a swing toward our draw?</p>
+${cb("kl","We have a key level")}${rd("klType","Reversal: relevant swing / ERL range","Reversals – relevant swings, order-paired ranges (ERL)")}${rd("klType","Continuation: FVG (IRL)","Continuations away from a reversal – FVGs (IRL)")}${rd("klType","C2/C3 swing formation","C2 / C3 swing formations")}
+${tx("klText","Where does the swing form?")}</div>
+<div class="card c4"><h2>4 · Cracks in Correlation (CiC)</h2><p class=q>Is the swing real?</p>
+${cb("cic2","True reversal: 2-stage CiC (SMT + PSP variant)")}${cb("cic1","Continuation: ≥1-stage CiC in a gap (SMT fill, MMXM redistribution from an FVG)")}
+${cb("advOn","Advanced filter in play (decoupled 9:30 at 6:00 H4, or SMT breaking / strength switching)")}${cb("advOk","Advanced filter satisfied (resync with CiC, or SS-CiC for a lagger)")}</div>
+<div class="card c5"><h2>5 · LTF V-shape</h2><p class=q>Do we have a reversal signature?</p>
+${cb("v","V-shape away from the key level with CiC + filter")}${sel("sig",["CISD","iFVG","Displacement","MSS"])}</div>
+<div class="card"><h2>Decision flow</h2><div id=flow></div></div>
+<div class="card"><h2>Log it</h2><div class=row><input type=text data-k=pair placeholder="Instrument"><select data-k=dir><option value="">Direction</option><option>Long</option><option>Short</option></select></div>
+<div class=row><select data-k=out>${["Result","Win","Loss","BE","Open","No trade"].map(x=>`<option value="${x=="Result"?"":x}" ${D.out==x?"selected":""}>${x}</option>`).join("")}</select><input type=number step=0.1 data-k=r value="${D.r??""}" placeholder="R (e.g. 2 or -1)"><input type=number step=0.01 data-k=usd value="${D.usd??""}" placeholder="$ P&L (e.g. -50)"></div><div id=qb>${qb()}</div>
+<p class=q>What went wrong, if anything?</p><div class=chips>${MIS.map((m,i)=>`<label><input type=checkbox data-k="m${i}" ${D["m"+i]?"checked":""}>${m}</label>`).join("")}</div>
+${tx("notes","Notes / lesson")}<div class=row><button onclick=saveT()>Save to journal</button><button class=g onclick="D={};R()">Clear form</button></div></div>`}
+function saveT(){const [,vt,f]=verdict();if(!D.out){alert("Choose a result first.");return}if(QO[D.out]&&!D.q){alert("Rate it: good or bad.");return}
+ S.trades.push({id:Date.now(),date:today(),pair:D.pair||"",dir:D.dir||"",out:D.out,r:parseFloat(D.r)||0,usd:parseFloat(D.usd)||0,q:D.q||"",qa:[0,1,2].map(i=>D["qa"+i]||""),ok:vt=="EXECUTE",failed:f.map(x=>x[1]),mis:MIS.filter((m,i)=>D["m"+i]),notes:D.notes||"",draw:D.draw||"",sess:D.sess||"",sig:D.sig||""});
+ sv();D={};calSel=today();tab="cal";R()}
+
+function vToday(){const t=S.checks[today()]||{},n=S.rules.filter(r=>t[r.id]).length;
+ const al=(k,l)=>`<div class=row><span>${l}</span><input type=time data-al=${k} value="${S.alarms[k].t}"><label class=cb style="flex:none"><input type=checkbox data-aon=${k} ${S.alarms[k].on?"checked":""}>On</label></div>`;
+ return`<h1>Today</h1><p class=sub>${new Date().toDateString()} · ${n}/${S.rules.length} rules checked</p>
+<div class=bar><i style="width:${S.rules.length?n/S.rules.length*100:0}%"></i></div><div style="height:12px"></div>
+<div class="card ca"><h2>Rules before trading</h2><p class=q>Read each one, then tick it.</p>
+${S.rules.map(r=>`<div class="row sp"><label class=cb style="flex:1"><input type=checkbox data-rule=${r.id} ${t[r.id]?"checked":""}><span>${esc(r.t)}</span></label><button class="x s" style="flex:none" onclick="delRule(${r.id})" aria-label="Remove rule">✕</button></div>`).join("")}
+<div class=row><input type=text id=nr placeholder="Add your own rule"><button class=g style="flex:none" onclick=addRule()>Add</button></div></div>
+<div class=card><h2>Reminders</h2><p class=q>Fires while this page is open. Allow notifications so it can alert you.</p>${al("rules","Check rules")}${al("review","Review the day")}<button class=g onclick="Notification&&Notification.requestPermission()">Allow notifications</button></div>
+<div class=card><h2>Account</h2><p class=q>${esc(UNAME)}</p><p class=q id=sy>${sy}</p><div class=row><button class=g onclick=installApp()>Install app</button><button class=g onclick="FB.logout().then(()=>location.reload())">Sign out</button></div></div>
+<div class="card c5"><h2>End-of-day check</h2><p class=q>How was today?</p>${tx("eod","What did I do well? What rule did I bend?")}<button onclick="S.checks[today()]=Object.assign(S.checks[today()]||{},{note:D.eod});sv();alert('Saved')">Save day note</button></div>`}
+function addRule(){const v=$("#nr").value.trim();if(!v)return;S.rules.push({id:Date.now(),t:v});sv();R()}
+function delRule(id){S.rules=S.rules.filter(r=>r.id!=id);sv();R()}
+
+function vCal(){const y=calM.getFullYear(),m=calM.getMonth(),first=new Date(y,m,1),off=(first.getDay()+6)%7,days=new Date(y,m+1,0).getDate();
+ let h=["M","T","W","T","F","S","S"].map(d=>`<div class=h>${d}</div>`).join("")+"<div class=h></div>".repeat(off);
+ for(let d=1;d<=days;d++){const k=y+"-"+pad(m+1)+"-"+pad(d),ts=S.trades.filter(t=>t.date==k&&!NT(t)),r=ts.reduce((a,t)=>a+t.r,0),c=S.checks[k]||{},done=S.rules.length&&S.rules.every(x=>c[x.id]);
+  h+=`<div class="${ts.length?(r>0?"w":r<0?"l":""):""} ${k==today()?"t":""}" onclick="calSel='${k}';R()"><span>${d}${done?" ✓":""}</span><b>${ts.length?(r>0?"+":"")+r.toFixed(1)+"R":S.trades.some(t=>t.date==k&&NT(t))?"pass":""}</b></div>`}
+ const sd=calSel,st=sd?S.trades.filter(t=>t.date==sd):[];
+ return`<h1>Calendar</h1><div class="row sp"><button class="g s" style="flex:none" onclick="calM=new Date(${y},${m-1},1);R()">‹</button><b style="text-align:center">${first.toLocaleString("en",{month:"long"})} ${y}</b><button class="g s" style="flex:none" onclick="calM=new Date(${y},${m+1},1);R()">›</button></div><div style="height:8px"></div><div class=cal>${h}</div><p class=sub>✓ = all rules checked that day. Green/red = net R.</p>
+${sd?`<div class=card><h2>${sd}</h2>${st.length?st.map(t=>`<div class="row sp"><span>${esc(t.pair)||"Trade"} ${t.dir} · ${t.out}${t.q?" ("+t.q+")":""}${NT(t)?"":` · <b class="${t.r>=0?"pos":"neg"}">${t.r}R${t.usd?" / $"+t.usd:""}</b>${t.ok?"":" · ⚠ not a valid setup"}`}<small style="display:block;color:var(--mut)">${t.mis.join(", ")} ${esc(t.notes)} ${(t.qa||[]).filter(Boolean).map(x=>esc(x)).join(" | ")}</small></span><button class="x s" style="flex:none" onclick="delT(${t.id})">✕</button></div>`).join(""):"<p class=sub>No trades logged.</p>"}</div>`:""}`}
+function delT(id){S.trades=S.trades.filter(t=>t.id!=id);sv();R()}
+
+function range(p,off){const n=new Date();let a,b;
+ if(p=="week"){a=mon(n);a.setDate(a.getDate()-7*off);b=new Date(a);b.setDate(b.getDate()+6)}
+ else if(p=="month"){a=new Date(n.getFullYear(),n.getMonth()-off,1);b=new Date(n.getFullYear(),n.getMonth()-off+1,0)}
+ else if(p=="year"){a=new Date(n.getFullYear()-off,0,1);b=new Date(n.getFullYear()-off,11,31)}
+ else{a=new Date(2000,0,1);b=new Date(2100,0,1)}return[ymd(a),ymd(b)]}
+function calc(p,off){const[a,b]=range(p,off),all=S.trades.filter(t=>t.date>=a&&t.date<=b),tk=all.filter(t=>!NT(t)),cl=tk.filter(t=>t.out=="Win"||t.out=="Loss");
+ const w=cl.filter(t=>t.out=="Win").length,R_=tk.reduce((s,t)=>s+t.r,0),valid=tk.filter(t=>t.ok),inv=tk.filter(t=>!t.ok);
+ const days=Object.keys(S.checks).filter(d=>d>=a&&d<=b),good=days.filter(d=>S.rules.length&&S.rules.every(r=>S.checks[d][r.id]));
+ const pr={};tk.forEach(t=>{t.failed.concat(t.mis).forEach(x=>pr[x]=(pr[x]||0)+1)});const ql={};all.forEach(t=>{if(t.q){ql[t.q]=(ql[t.q]||0)+1;if(/^Bad/.test(t.q))pr[t.q]=(pr[t.q]||0)+1}});
+ const wr=x=>{const c=x.filter(t=>t.out=="Win"||t.out=="Loss");return c.length?Math.round(c.filter(t=>t.out=="Win").length/c.length*100):null};
+ return{usd:tk.reduce((s,t)=>s+(t.usd||0),0),ql,n:tk.length,wr:cl.length?Math.round(w/cl.length*100):null,R:R_,avg:tk.length?R_/tk.length:0,disc:tk.length?Math.round(valid.length/tk.length*100):null,adh:days.length?Math.round(good.length/days.length*100):null,pr:Object.entries(pr).sort((x,y)=>y[1]-x[1]),wv:wr(valid),wi:wr(inv),ni:inv.length}}
+const pc=v=>v==null?"–":v+"%";
+function dl(c,p){if(c==null||p==null)return"";const d=c-p;return`<small class="${d>=0?"pos":"neg"}">${d>=0?"▲":"▼"} ${Math.abs(d)} pts vs last ${per}</small>`}
+function vStats(){const c=calc(per,0),p=per=="all"?{}:calc(per,1);
+ const top=c.pr.slice(0,6),mx=top.length?top[0][1]:1;
+ let ins=c.n?"":"Log a few trades to see insights.";
+ if(c.n&&c.wv!=null&&c.wi!=null)ins=`Trades from a fully valid setup won ${c.wv}% vs ${c.wi}% for setups that failed a gate (${c.ni} trades).`;
+ else if(c.ni)ins=`${c.ni} trade(s) were taken without a valid setup. That’s your main leak.`;
+ else if(c.n)ins=`Every trade this ${per} followed the decision flow. Keep it going.`;
+ return`<h1>Analytics</h1><div class=row style="margin:8px 0">${["week","month","year","all"].map(x=>`<button class="${per==x?"":"g"} s" onclick="per='${x}';R()">${x[0].toUpperCase()+x.slice(1)}</button>`).join("")}</div>
+<div class=grid2><div class=card><small>Win rate</small><div class=big>${pc(c.wr)}</div>${dl(c.wr,p.wr)}</div><div class=card><small>Total R</small><div class="big ${c.R>=0?"pos":"neg"}">${c.R.toFixed(1)}R</div><small>${c.n} trades · avg ${c.avg.toFixed(2)}R · <b class="${c.usd>=0?"pos":"neg"}">$${c.usd.toFixed(2)}</b></small></div>
+<div class=card><small>Followed the flow</small><div class=big>${pc(c.disc)}</div>${dl(c.disc,p.disc)}</div><div class=card><small>Rules checklist done</small><div class=big>${pc(c.adh)}</div>${dl(c.adh,p.adh)}</div></div>
+<div class="card ca"><h2>Repeated problems</h2>${top.length?top.map(([k,v])=>`<div style="margin:8px 0"><div class="row sp"><span>${esc(k)}</span><b style="flex:none">${v}×</b></div><div class=bar><i style="width:${v/mx*100}%;background:var(--rd)"></i></div></div>`).join(""):"<p class=sub>No repeated problems yet.</p>"}</div>
+<div class=card><h2>Trade quality</h2><div class=chips>${["Good win","Bad win","Good loss","Bad loss","Good pass","Bad pass"].map(x=>`<span style="border:1px solid var(--line);border-radius:20px;padding:4px 10px;font-size:13px">${x}: <b>${c.ql[x]||0}</b></span>`).join("")}</div></div>
+<div class="card c5"><h2>Insight</h2><p style="margin:0">${ins}</p></div>`}
+
+function vRev(){const n=new Date(),k=per=="month"?mk(n):wk(n),key=(per=="month"?"m":"w")+k;if(per!="week"&&per!="month")per="week";
+ const r=S.reviews[key]||{},c=calc(per,0);
+ return`<h1>Reviews</h1><div class=row style="margin:8px 0">${["week","month"].map(x=>`<button class="${per==x?"":"g"} s" onclick="per='${x}';R()">${x=="week"?"Weekly":"Monthly"}</button>`).join("")}</div>
+<div class="card c4"><h2>This ${per} in numbers</h2><p style="margin:0">${c.n} trades · win rate ${pc(c.wr)} · ${c.R.toFixed(1)}R / $${c.usd.toFixed(2)} · followed the flow ${pc(c.disc)} · rules checked ${pc(c.adh)}</p>${c.pr[0]?`<p class=sub>Most repeated problem: ${esc(c.pr[0][0])} (${c.pr[0][1]}×)</p>`:""}</div>
+<div class=card>${[["a","What worked? Which setups followed all 5 components?"],["b","What problem repeated?"],["c","One change for next "+per]].map(([i,q])=>`<p class=q>${q}</p><textarea data-rv="${key}|${i}">${esc(r[i])}</textarea>`).join("")}<button onclick="alert('Saved')">Done (auto-saved)</button></div>
+<h2>Past reviews</h2>${Object.keys(S.reviews).sort().reverse().map(k=>`<div class=card><b>${k[0]=="m"?"Month":"Week of"} ${k.slice(1)}</b><p class=sub style="margin:4px 0 0">${esc(Object.values(S.reviews[k]).join(" · "))}</p></div>`).join("")||"<p class=sub>Nothing saved yet.</p>"}`}
+
+function R(){$("#app").innerHTML={today:vToday,trade:vTrade,cal:vCal,stats:vStats,rev:vRev}[tab]();
+ $("#nav").innerHTML=TABS.map(([k,l])=>`<button class="${tab==k?"on":""}" onclick="tab='${k}';R();scrollTo(0,0)">${l}</button>`).join("");flow()}
+document.addEventListener("input",e=>{const t=e.target;
+ if(t.dataset.k){D[t.dataset.k]=t.type=="checkbox"?t.checked:t.value;flow();if(t.dataset.k=="out"||t.dataset.k=="q")$("#qb").innerHTML=qb()}
+ else if(t.dataset.rule){const d=S.checks[today()]=S.checks[today()]||{};d[t.dataset.rule]=t.checked;sv();R()}
+ else if(t.dataset.al){S.alarms[t.dataset.al].t=t.value;sv()}
+ else if(t.dataset.aon){S.alarms[t.dataset.aon].on=t.checked;sv();if(t.checked&&window.Notification)Notification.requestPermission()}
+ else if(t.dataset.rv){const[k,i]=t.dataset.rv.split("|");(S.reviews[k]=S.reviews[k]||{})[i]=t.value;sv()}});
+setInterval(()=>{const n=new Date(),hm=pad(n.getHours())+":"+pad(n.getMinutes());
+ for(const k in S.alarms){const a=S.alarms[k],id=today()+k;if(a.on&&a.t==hm&&!S.fired[id]){S.fired[id]=1;sv();const m=k=="rules"?"Time to check your trading rules.":"Time to review your day.";
+  try{new Notification("Trade Journal",{body:m})}catch(e){}
+  try{const c=new AudioContext(),o=c.createOscillator();o.connect(c.destination);o.start();o.stop(c.currentTime+.4)}catch(e){}
+  alert(m);tab=k=="rules"?"today":"rev";R()}}},15000);
+showLogin();
+</script>
+<script type="module" src="./firebase-init.js"></script></body></html>
